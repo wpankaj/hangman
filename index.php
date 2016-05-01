@@ -65,13 +65,21 @@ $word = isset($_SESSION["word"])?$_SESSION["word"]:null;
         this is for the sake of making the chances configurable.
     -->
     <div class="text-center">
-        <h3>Number of Chances Left</h3> 
+        <h3>Number of Chances(Thumbs) Left</h3> 
         <?php
-            for($i=1;$i<=$num_allowed;$i++)
+            if($num_allowed>$_SESSION["num_fail"])
             {
-        ?>
-            <i class="fa fa-thumbs-o-up fa-3x"></i>
-        <?php
+                for($i=1;$i<=$num_allowed;$i++)
+                {
+                    $display_class=($i<=$_SESSION["num_fail"])? "fa-thumbs-o-down":"fa-thumbs-o-up";
+            ?>
+                <i class="fa fa-2x <?php echo $display_class;?>" id="chance-<?php echo $i;?>"></i>
+            <?php
+                }
+            }
+            else
+            {
+                echo "Seems like you have lost the Game. Start a new one.";
             }
         ?>
         
@@ -85,13 +93,37 @@ $word = isset($_SESSION["word"])?$_SESSION["word"]:null;
     </div>
     <!--Start game control ends-->
     
-    
+   <!--Result Control-->
+    <div id="result_div" class="text-danger"></div>
+    <!--result control ends -->
+ 
     
     <!--Debug Control-->
     <div id="debug_div" class="text-sm text-danger"></div>
     <!--Debug control ends -->
     
     
+</div>
+
+<!-- Modal -->
+<div id="result_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="result_modal_title">Hangman Result</h4>
+      </div>
+      <div class="modal-body">
+          <p id="result_modal_body">Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close and Start New Game</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <?php

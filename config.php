@@ -14,7 +14,7 @@ $db_words = Array(
                     "THIS", "THAT", "MEDIUM","ENCYCLOPEDIA", "ENGLAND", "APPLE"
             );
 
-$num_allowed = 4;
+$num_allowed = 6;
 //max chances to be given in the game (or in how many steps does hangman hangs himself)
 
 $show_debug_text=true;

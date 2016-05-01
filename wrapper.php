@@ -43,8 +43,30 @@ $function_name = $_GET["func"];
         }
         else
         {
+            $word = $_SESSION["word"];
+            $fail=0;
+            $pass=0;
+            for($i=0;$i<=strlen($word)-1;$i++)
+            {
+                if(in_array( trim(strtoupper($word[$i])), $_SESSION["attempts"]) )
+                {
+                   $pass++;
+                }
+                else
+                {
+                    $fail++;
+                }
+            }
             
+            if($pass==strlen($word) and $fail==0)
+            {
+                $out = "WON";
+            }
         }
+        
+        $out=Array("Result"=>$out, "Pass"=>$_SESSION["num_pass"], "Fail"=>$_SESSION["num_fail"]);
+        $out=json_encode($out);
+        
     }
     
     echo $out;
