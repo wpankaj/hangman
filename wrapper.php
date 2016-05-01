@@ -3,8 +3,7 @@
 require_once 'config.php';
 $function_name = $_GET["func"];
 
-
-//if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' ) {
+if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' ) {
     if($function_name=="startGame") {
         if(startGame())
         {
@@ -70,11 +69,11 @@ $function_name = $_GET["func"];
     }
     
     echo $out;
-//}
-//else
-//{
-//    exit("No Kidding with this Page");
-//}
+}
+else
+{
+    exit("No Kidding with this Page");
+}
     
     
     
