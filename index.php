@@ -6,7 +6,7 @@ $num_allowed = $num_allowed;//frm config
 
 if(!isset($_SESSION["game_started"]))
 {
-    $hangman->startGame();//from wrapper
+    startGame();//from wrapper
 }
 
 $word = isset($_SESSION["word"])?$_SESSION["word"]:null;
