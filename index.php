@@ -3,10 +3,10 @@ require_once 'config.php';// contains globals
 include_once 'start-page.php'; // contains html start code/js/css/static
 
 $num_allowed = $num_allowed;//frm config
-
 if(!isset($_SESSION["game_started"]))
 {
-    startGame();//from wrapper
+    //startGame();//from wrapper
+    header("location:./start-game.php");
 }
 
 $word = isset($_SESSION["word"])?$_SESSION["word"]:null;
